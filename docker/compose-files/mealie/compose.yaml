@@ -1,0 +1,18 @@
+services:
+  mealie:
+    image: hkotel/mealie:v3.3.2
+    container_name: mealie
+    restart: unless-stopped
+    ports:
+      - "9925:80"
+    environment:
+      # Set your timezone - find yours here: https://en.wikipedia.org/wik>
+      - TZ=Europe/Dublin
+      # Default user settings
+      - DEFAULT_EMAIL=simonalex957@gmail.com
+      - DEFAULT_PASSWORD=gov89Typ*
+      - MAX_WORKERS=1
+      - WEB_CONCURRENCY=1
+    volumes:
+      # Database and recipe data
+      - /home/server/mealie:/app/data
